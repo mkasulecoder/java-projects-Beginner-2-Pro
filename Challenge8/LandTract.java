@@ -28,3 +28,6 @@ package Challenge8;
  * Note: In this exercise do not write a main method. Simply write the LandTract
  * class as specified above.
  */
+
+public class LandTract {
+}
