@@ -30,4 +30,43 @@ package Challenge8;
  */
 
 public class LandTract {
+    private int length;
+    private int width;
+
+    // Constructor
+    public LandTract(int length, int width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Copy constructor
+    public LandTract(LandTract other) {
+        this.length = other.getLength();
+        this.width = other.getWidth();
+    }
+
+    // Getter for length field
+    public int getLength() {
+        return length;
+    }
+
+    // Getter for width field
+    public int getWidth() {
+        return width;
+    }
+
+    // Method to calculate the area of the LandTract
+    public int area() {
+        return length * width;
+    }
+
+    // Method to check if two LandTracts have the same area
+    public boolean equals(LandTract other) {
+        return this.area() == other.area();
+    }
+
+    // toString method to return a string representation of the LandTract object
+    public String toString() {
+        return "Length: " + length + ", Width: " + width + ", Area: " + area();
+    }
 }
