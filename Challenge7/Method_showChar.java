@@ -36,7 +36,7 @@ public class Method_showChar {
 
     }
 
-    public static void showChar(String str, int index) { 
+    public static void showChar(String str, int index) {
         System.out.println(str.charAt(index));
     }
 }
