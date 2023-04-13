@@ -5,35 +5,39 @@ import java.io.*;
 public class DataDisplay {
     public static void main(String[] args) {
         try (FileInputStream input = new FileInputStream("data.dat");
-                BufferedInputStream buffer = new BufferedInputStream(input)) {
-            // Display the first 5 bytes stored in the file
-            System.out.println("First 5 bytes:");
+                DataInputStream data = new DataInputStream(input)) {
+
+            // Display the first 5 ints stored in the file
             for (int i = 0; i < 5; i++) {
-                int b = buffer.read();
-                if (b == -1) {
-                    System.out.println("EOF Error");
-                    return;
-                }
+                int b = data.readInt();
                 System.out.println(b);
             }
 
-            // Display every even-numbered byte in the file
-            System.out.println("\nEven-numbered bytes:");
-            buffer.mark(Integer.MAX_VALUE);
-            int i = 0;
-            while (true) {
-                int b = buffer.read();
-                if (b == -1) {
-                    System.out.println("EOF Error");
-                    return;
-                } else if (i % 2 == 0) {
-                    System.out.println(b);
+            // display even numbers
+            for (int i = 0; i < 5; i++) {
+                if (data.readInt() % 2 == 0) {
+                    int even = data.readInt();
+                    System.out.println(even);
                 }
-                i++;
+            }
+
+            // display odd numbers
+            for (int i = 0; i < 5; i++) {
+                if (data.readInt() % 2 != 0) {
+                    int odd = data.readInt();
+                    System.out.println(odd);
+                }
+            }
+            // reverse the order
+            for (int i = 5; i < 0; i--) {
+                int reverseValue = data.readInt();
+                System.out.println(reverseValue);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File Error");
-        } catch (IOException e) {
+        } catch (EOFException e) {
+            System.out.println("EOF Error");
+        } catch (Exception e) {
             System.out.println("Error");
         }
     }
