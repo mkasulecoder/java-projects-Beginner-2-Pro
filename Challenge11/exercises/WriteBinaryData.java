@@ -15,7 +15,7 @@ import java.io.IOException;
 public class WriteBinaryData {
 
     public static void main(String[] args) {
-        int[] x = { 2, 5, 6, 7, 3, 4, 5 };
+        int[] x = { 2, 5, 6, 7, 3 };
         // Create a file
         createFile(x);
 
@@ -31,7 +31,7 @@ public class WriteBinaryData {
     public static void createFile(int[] x) {
 
         try (
-                FileOutputStream createdFile = new FileOutputStream("BinaryDoc.dat");
+                FileOutputStream createdFile = new FileOutputStream("BinaryTest.dat");
                 DataOutputStream writeFile = new DataOutputStream(createdFile)) {
             System.out.println("Writing Files");
             for (int i = 0; i < x.length; i++) {
@@ -54,7 +54,7 @@ public class WriteBinaryData {
         int number;
         boolean endOfFile = false;
 
-        try (FileInputStream readFile = new FileInputStream("BinaryDoc.dat");
+        try (FileInputStream readFile = new FileInputStream("BinaryTest.dat");
                 DataInputStream readData = new DataInputStream(readFile)) {
             System.out.println("Reading Numbers ...");
             while (!endOfFile) {

@@ -28,7 +28,7 @@ public class DataWriter {
             Scanner input = new Scanner(file);
 
             while (input.hasNext()) {
-                word.append(input.nextLine());
+                word.append(input.nextLine() + "\n");
             }
         } catch (Exception e) {
             System.out.println("File was not found");
