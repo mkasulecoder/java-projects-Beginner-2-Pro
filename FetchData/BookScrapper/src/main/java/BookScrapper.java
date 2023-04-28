@@ -11,11 +11,17 @@ public class BookScrapper {
         try {
             Document doc = Jsoup.connect(url).get();
             Elements books = doc.select(".product_pod");
+
             for (Element book : books) {
                 String title = book.select("h3 > a").text();
                 String price = book.select(".price_color").text();
-                System.out.println(title + " - " + price);
+                String pr = price.substring(1);
+
+                if(Double.parseDouble(pr) < 25) {
+                    System.out.println(title + " - " + price);
+                }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
